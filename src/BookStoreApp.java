@@ -73,14 +73,22 @@ public class BookStoreApp {
 
     public void addingDefaultBooks()
     {
-        Book Utopia = new Book("1234", "Utopia", "Thomas More", 10, "1516", 50.0, BookType.PAPERBOOK);
-        Book AnimalFarm = new Book("12345", "Animal Farm", "George Orwell", 50, "1945", 50.0, BookType.PAPERBOOK);
-        Book ArabicUtopia = new Book("12346", "Utopia", "Ahmed Khalid Tawfik", "2008", 50.0, BookType.EBOOK);
-        Book ShowCaseBook = new Book("1", "ShowCaseBook", "Ahmed", 1, "2025", 1, BookType.SHOWCASE);
-        _booksService.AddBook(Utopia);  
-        _booksService.AddBook(AnimalFarm);
-        _booksService.AddBook(ArabicUtopia);  
-        _booksService.AddBook(ShowCaseBook);
+        ArrayList<Book> BooksList = new ArrayList<>();
+        BooksList.add(new Book("1234", "Utopia", "Thomas More", 10, "1516", 50.0, BookType.PAPERBOOK));
+        BooksList.add(new Book("12345", "Animal Farm", "George Orwell", 50, "1945", 50.0, BookType.PAPERBOOK));
+        BooksList.add(new Book("12346", "Utopia", "Ahmed Khalid Tawfik", "2008", 50.0, BookType.EBOOK));
+        BooksList.add(new Book("1", "ShowCaseBook", "Ahmed", 1, "2025", 1, BookType.SHOWCASE));
+        for(Book book : BooksList){
+            try {
+                _booksService.AddBook(book);
+            } 
+            catch (IllegalArgumentException ex)
+            {
+                System.out.println("Error: " + ex.getMessage());
+                return;
+            }
+        
+        }
     }
 
     public void displayBooks()
