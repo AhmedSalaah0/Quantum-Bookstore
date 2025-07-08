@@ -1,18 +1,14 @@
-## Getting Started
+Quantum Bookstore (Java)
+This is a basic Java-based bookstore application that supports adding, buying, and managing books (eBooks and paper books). It simulates book purchases and shipping processes using interfaces and service classes.
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+Features
+Add books to inventory.
 
-## Folder Structure
+Buy books by ISBN (supports both eBooks and paper books).
 
-The workspace contains two folders by default, where:
+Handle stock management for paper books.
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+Ship paper books to a given address.
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+Remove outdated books by publication year.
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
-
-## Dependency Management
-
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
