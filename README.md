@@ -12,3 +12,4 @@ Ship paper books to a given address.
 
 Remove outdated books by publication year.
 
+![image](https://github.com/user-attachments/assets/677110ea-73d4-4cf6-ab2a-94ffe869dcab)
