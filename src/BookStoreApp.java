@@ -56,7 +56,7 @@ public class BookStoreApp {
                     if (book.getBookType() == BookType.PAPERBOOK)
                     {
                         System.out.print("Enter Your Address: ");
-                        String Address = System.console().readLine();
+                        address = System.console().readLine();
                     }
                     _buyBookService.BuyBook(book.getISBN(), selectedBook.selectedQuantity, Email, address);
                 }
