@@ -35,7 +35,13 @@ public class BookStoreApp {
                 SelectedBook selectedBook = null;
                 Book book;
                 displayBooks();
-                selectedBook = SelectBook();
+                try {
+                    selectedBook = SelectBook();
+                }
+                catch (IllegalArgumentException ex){
+                    System.out.println("Error: " + ex.getMessage());
+                    return;
+                }
                 book = selectedBook.book;
                 if (book.getBookType() == BookType.SHOWCASE)
                 {
@@ -70,7 +76,7 @@ public class BookStoreApp {
         Book Utopia = new Book("1234", "Utopia", "Thomas More", 10, "1516", 50.0, BookType.PAPERBOOK);
         Book AnimalFarm = new Book("12345", "Animal Farm", "George Orwell", 50, "1945", 50.0, BookType.PAPERBOOK);
         Book ArabicUtopia = new Book("12346", "Utopia", "Ahmed Khalid Tawfik", "2008", 50.0, BookType.EBOOK);
-        Book ShowCaseBook = new Book("1", "ShowCaseBook", "Ahmed", "2025", 1, BookType.SHOWCASE);
+        Book ShowCaseBook = new Book("1", "ShowCaseBook", "Ahmed", 1, "2025", 1, BookType.SHOWCASE);
         _booksService.AddBook(Utopia);  
         _booksService.AddBook(AnimalFarm);
         _booksService.AddBook(ArabicUtopia);  
@@ -97,8 +103,13 @@ public class BookStoreApp {
 
     public SelectedBook SelectBook()
     {
-        int selectedBookIndex = Integer.parseInt(System.console().readLine()) - 1;
-        if (selectedBookIndex > inventory.size() - 1) {
+        String input = System.console().readLine();
+        if (input == null || input.trim().isEmpty())
+        {
+            throw new IllegalArgumentException("You should choose a book");
+        }
+        int selectedBookIndex = Integer.parseInt(input) - 1;
+        if (selectedBookIndex > inventory.size() - 1 || selectedBookIndex < 0) {
             throw new IllegalArgumentException("Invalid Selection");
         }
         Book book = inventory.get(selectedBookIndex);
